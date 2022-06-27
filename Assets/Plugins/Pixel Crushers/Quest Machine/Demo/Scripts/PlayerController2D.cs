@@ -79,18 +79,18 @@ namespace PixelCrushers.QuestMachine.Demo
 
         private void Update()
         {
-            if (needToHide && (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f))
+            if (needToHide && (Mathf.Abs(InputDeviceManager.GetAxis("Horizontal")) > 0.1f || Mathf.Abs(InputDeviceManager.GetAxis("Vertical")) > 0.1f))
             {
                 needToHide = false;
                 if (hideOnMove != null) hideOnMove.SetActive(false);
             }
-            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
-            if (Input.GetButtonDown(attackButton))
+            if ((InputDeviceManager.DefaultGetMouseButtonDown(0) || InputDeviceManager.DefaultGetMouseButtonDown(1)) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
+            if (InputDeviceManager.IsButtonDown(attackButton))
             {
 
                 StartCoroutine(Attack());
             }
-            else if (Input.GetButtonDown(interactButton))
+            else if (InputDeviceManager.IsButtonDown(interactButton))
             {
                 Interact();
             }
@@ -99,7 +99,7 @@ namespace PixelCrushers.QuestMachine.Demo
         private void FixedUpdate()
         {
             // Move the character:
-            var move = new Vector2(Input.GetAxis(horizontalAxis) * maxHorizontalSpeed, Input.GetAxis(verticalAxis) * maxVerticalSpeed);
+            var move = new Vector2(InputDeviceManager.GetAxis(horizontalAxis) * maxHorizontalSpeed, InputDeviceManager.GetAxis(verticalAxis) * maxVerticalSpeed);
             m_rigidbody2D.velocity = move;
 
             // Update the animator:
@@ -116,7 +116,7 @@ namespace PixelCrushers.QuestMachine.Demo
             }
         }
 
-//#if USE_PHYSICS2D || !UNITY_2018_1_OR_NEWER
+#if USE_PHYSICS2D || !UNITY_2018_1_OR_NEWER
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -134,7 +134,7 @@ namespace PixelCrushers.QuestMachine.Demo
             oldTarget.Untarget();
         }
 
-//#endif
+#endif
 
         private void CleanTargetList()
         {

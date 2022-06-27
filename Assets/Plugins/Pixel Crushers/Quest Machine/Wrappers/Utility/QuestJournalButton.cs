@@ -9,7 +9,7 @@ namespace PixelCrushers.QuestMachine.Wrappers
     /// This wrapper class keeps references intact if you switch between the 
     /// compiled assembly and source code versions of the original class.
     /// </summary>
-    [AddComponentMenu("Pixel Crushers/Quest Machine/Quest Journal Button")]
+    [AddComponentMenu("Pixel Crushers/Quest Machine/Quest Journal")]
     public class QuestJournalButton : PixelCrushers.QuestMachine.QuestJournalButton
     {
     }
