@@ -6,3 +6,5 @@
 /Temp
 *.csproj
 *.sln
+Assets/Plugins/GameCreator/Data/Resources/Settings/core.general.asset
+Assets/Plugins/GameCreator/Data/Resources/Settings/core.welcome.asset
